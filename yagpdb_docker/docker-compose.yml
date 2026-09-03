@@ -23,8 +23,8 @@ services:
       # - "/app/yagpdb"
       - "-all"
       - "-pa"
-      - "-exthttps=false"
-      - "-https=true"
+      - "-exthttps=true"
+      - "-https=false"
     depends_on:
       - redis
       - db
@@ -33,9 +33,6 @@ services:
     volumes:
       - cert_cache:/app/cert
       - soundboard:/app/soundboard
-    ports:
-      - '80:80'
-      - '443:443'
     env_file:
       - app.env
 
