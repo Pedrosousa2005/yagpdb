@@ -4,9 +4,6 @@ volumes:
   cert_cache:
   soundboard:
 
-networks:
-  default:
-
 services:
   app:
     build:
@@ -24,9 +21,6 @@ services:
     depends_on:
       - redis
       - db
-
-    networks:
-      - default
 
     volumes:
       - cert_cache:/app/cert
@@ -48,20 +42,12 @@ services:
   redis:
     image: docker.io/redis
     restart: unless-stopped
-
-    networks:
-      - default
-
     volumes:
       - redis:/data
 
   db:
     image: docker.io/postgres:11
     restart: unless-stopped
-
-    networks:
-      - default
-
     volumes:
       - db:/var/lib/postgresql/data
 
